@@ -1,37 +1,54 @@
 const options = ["rock", "paper", "scissors"];
 
-// #1. Generate computer option
+const number = parseInt(prompt("How many rounds of Rock, Paper, Scissors do you want to play?"));
+
+playGame(number);
+
 function getComputerChoice(){
     return computerGuess = options[Math.floor(Math.random() * 3)];
 }
-// #2. Take input from the player
+
 function getHumanChoice(){
     return prompt("Rock, Paper, Scissors! Which one will you choose?");
 }
 
-let playerScore = 0;
-let computerScore = 0;
+function playGame(roundCount){
+    let playerScore = 0;
+    let computerScore = 0;
 
-function playRound(playerChoice, computerChoice){    
-    playerChoice = playerChoice.toLowerCase();
+    function playRound(playerChoice, computerChoice){    
+        playerChoice = playerChoice.toLowerCase();
 
-    if((playerChoice === "rock" && computerChoice === "paper") ||
-        (playerChoice === "paper" && computerChoice === "scissors") ||
-        (playerChoice === "scissors" && computerChoice === "rock")){
-        alert("I chose " + computerChoice + "! You lose!");
-        computerScore++;
+        if((playerChoice === "rock" && computerChoice === "paper") ||
+            (playerChoice === "paper" && computerChoice === "scissors") ||
+            (playerChoice === "scissors" && computerChoice === "rock")){
+                computerScore++;
+                alert("Player: " + playerScore + " Computer: " + computerScore +  "\n" + "I chose " + computerChoice + "! You lose!");
+        }
+        else if((computerChoice === "rock" && playerChoice === "paper") ||
+            (computerChoice === "paper" && playerChoice === "scissors") ||
+            (computerChoice === "scissors" && playerChoice === "rock")){
+                playerScore++;
+                alert("Player: " + playerScore + " Computer: " + computerScore +  "\n" + "Impossible! You beat me!");
+        }
+        else if(computerChoice === playerChoice){
+                alert("Player: " + playerScore + " Computer: " + computerScore +  "\n" + "Draw!");
+        }
     }
-    else if((computerChoice === "rock" && playerChoice === "paper") ||
-        (computerChoice === "paper" && playerChoice === "scissors") ||
-        (computerChoice === "scissors" && playerChoice === "rock")){
-        alert("Impossible! You beat me!");
-        playerScore++;
+
+    for(i = 0; i < roundCount; i++){
+        console.log("Round " + i);
+        const computerSelection = getComputerChoice();
+        console.log(computerSelection);
+        const playerSelection = getHumanChoice();
+        playRound(playerSelection, computerSelection);
+        console.log("Player: " + playerScore + " Computer: " + computerScore);
+    }
+
+    if(playerScore > computerScore){
+        alert("You beat me fair and square.");
+    }
+    else{
+        alert("Better luck next time!");
     }
 }
-
-const computerSelection = getComputerChoice();
-console.log(computerSelection);
-const playerSelection = getHumanChoice();
-
-playRound(playerSelection, computerSelection);
-console.log("Player: " + playerScore + " Computer: " + computerScore);
