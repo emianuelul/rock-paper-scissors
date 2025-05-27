@@ -4,22 +4,34 @@ const options = ["rock", "paper", "scissors"];
 function getComputerChoice(){
     return computerGuess = options[Math.floor(Math.random() * 3)];
 }
-
-
-console.log(getComputerChoice);
-
 // #2. Take input from the player
-let playerGuess = prompt("Rock, Paper, Scissors! Which one will you choose?");
-
-console.log(playerGuess);
-
-if((playerGuess === "rock" && computerGuess === "paper") ||
-    (playerGuess === "paper" && computerGuess === "scissors") ||
-    (playerGuess === "scissors" && computerGuess === "rock")){
-    alert("I chose " + computerGuess + "! You lose!");
+function getHumanChoice(){
+    return prompt("Rock, Paper, Scissors! Which one will you choose?");
 }
-else if((computerGuess === "rock" && playerGuess === "paper") ||
-    (computerGuess === "paper" && playerGuess === "scissors") ||
-    (computerGuess === "scissors" && playerGuess === "rock")){
-    alert("Impossible! You beat me!");
+
+let playerScore = 0;
+let computerScore = 0;
+
+function playRound(playerChoice, computerChoice){    
+    playerChoice = playerChoice.toLowerCase();
+
+    if((playerChoice === "rock" && computerChoice === "paper") ||
+        (playerChoice === "paper" && computerChoice === "scissors") ||
+        (playerChoice === "scissors" && computerChoice === "rock")){
+        alert("I chose " + computerChoice + "! You lose!");
+        computerScore++;
+    }
+    else if((computerChoice === "rock" && playerChoice === "paper") ||
+        (computerChoice === "paper" && playerChoice === "scissors") ||
+        (computerChoice === "scissors" && playerChoice === "rock")){
+        alert("Impossible! You beat me!");
+        playerScore++;
+    }
 }
+
+const computerSelection = getComputerChoice();
+console.log(computerSelection);
+const playerSelection = getHumanChoice();
+
+playRound(playerSelection, computerSelection);
+console.log("Player: " + playerScore + " Computer: " + computerScore);
