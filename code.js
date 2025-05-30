@@ -2,8 +2,6 @@ const options = ["rock", "paper", "scissors"];
 
 let playerChoice;
 
-const computerDialogue = document.querySelector("#computerDialogue");
-
 function getComputerChoice(){
     return computerGuess = options[Math.floor(Math.random() * 3)];
 }
@@ -11,18 +9,22 @@ function getComputerChoice(){
 let playerScore = 0;
 let computerScore = 0;
 
+
+
 function updateScores(){
     const playerSc = document.querySelector("#playerScore");
     const computerSc = document.querySelector("#computerScore");
-
-    playerSc.textContent = "Player Score: " + playerScore;
-    computerSc.textContent = "Computer Score: " + computerScore;
+    const playerLabel = document.querySelector(".name.player");
+    const computerLabel = document.querySelector(".name.computer");
+    
+    playerSc.textContent = playerScore;
+    computerSc.textContent = computerScore;
 
     if(playerScore >= 5){
-        playerSc.textContent += " -- Player Wins!";
+        playerLabel.textContent = "Player -- Player Wins!";
     }
     else if(computerScore >= 5){
-        computerSc.textContent += " -- Computer Wins!";
+        computerLabel.textContent = "Computer -- Computer Wins!";
     }
 }
 
@@ -31,16 +33,14 @@ function playRound(playerChoice, computerChoice){
         (playerChoice === "paper" && computerChoice === "scissors") ||
         (playerChoice === "scissors" && computerChoice === "rock")){
             computerScore++;
-            computerDialogue.textContent = "I win!";
     }
     else if((computerChoice === "rock" && playerChoice === "paper") ||
         (computerChoice === "paper" && playerChoice === "scissors") ||
         (computerChoice === "scissors" && playerChoice === "rock")){
             playerScore++;
-            computerDialogue.textContent = "You beat me!";
     }
     else if(computerChoice === playerChoice){
-            computerDialogue.textContent = "Draw!";
+            console.log("Draw");
     }
 
     updateScores();

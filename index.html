@@ -8,22 +8,25 @@
     <script src="./code.js" defer></script>
   </head>
   <body>
-    <h1>Rock, Paper, Scissors</h1>
-    <h2>Take your pick</h2>
+    <div class="overlay">
+      <ul class="options">
+        <li><button id="rock">Rock</button></li>
+        <li><button id="paper">Paper</button></li>
+        <li><button id="scissors">Scissors</button></li>
+      </ul>
+    </div>
 
-    <h3>Options</h3>
-    <ul class="options">
-      <li><button id="rock">Rock</button></li>
-      <li><button id="paper">Paper</button></li>
-      <li><button id="scissors">Scissors</button></li>
-    </ul>
-
-    <h3>Scores</h3>
-    <ul class="scores">
-      <li><p id="playerScore">Player Score: 0</p></li>
-      <li><p id="computerScore">Computer Score: 0</p></li>
-    </ul>
-
-    <p id="computerDialogue">Let's play a couple rounds!</p>
+    <div class="container">
+      <div class="scoreBox">
+        <div class="score player">
+          <h1 class="name player">Player</h1>
+          <p id="playerScore">0</p>
+        </div>
+        <div class="score computer">
+          <h2 class="name computer">Computer</h2>
+          <p id="computerScore">0</p>
+        </div>
+      </div>
+    </div>
   </body>
 </html>
