@@ -2,14 +2,14 @@ const options = ["rock", "paper", "scissors"];
 
 let playerChoice;
 
+const result = document.querySelector("#result")
+
 function getComputerChoice(){
     return computerGuess = options[Math.floor(Math.random() * 3)];
 }
 
 let playerScore = 0;
 let computerScore = 0;
-
-
 
 function updateScores(){
     const playerSc = document.querySelector("#playerScore");
@@ -33,14 +33,17 @@ function playRound(playerChoice, computerChoice){
         (playerChoice === "paper" && computerChoice === "scissors") ||
         (playerChoice === "scissors" && computerChoice === "rock")){
             computerScore++;
+            result.textContent = "Computer won this round!"
     }
     else if((computerChoice === "rock" && playerChoice === "paper") ||
         (computerChoice === "paper" && playerChoice === "scissors") ||
         (computerChoice === "scissors" && playerChoice === "rock")){
             playerScore++;
+            result.textContent = "Player won this round!"
     }
     else if(computerChoice === playerChoice){
             console.log("Draw");
+            result.textContent = "Draw!"
     }
 
     updateScores();
