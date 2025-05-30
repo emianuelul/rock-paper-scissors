@@ -21,10 +21,10 @@ function updateScores(){
     computerSc.textContent = computerScore;
 
     if(playerScore >= 5){
-        playerLabel.textContent = "Player -- Player Wins!";
+        playerLabel.textContent = "Player Wins! Yay";
     }
     else if(computerScore >= 5){
-        computerLabel.textContent = "Computer -- Computer Wins!";
+        computerLabel.textContent = "Computer Wins! womp womp";
     }
 }
 
